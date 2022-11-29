@@ -1,4 +1,6 @@
 "use strict";
+;
+;
 const persons = [
     {
         name: 'Иван Петров',
@@ -31,7 +33,15 @@ const persons = [
         role: "Администратор",
     },
 ];
-const logPerson = (user) => {
-    console.log(`${user.name}, ${user.age}`);
+const isAdmin = (val) => 'group' in val;
+const logPerson = (person) => {
+    let information;
+    if (isAdmin(person)) {
+        information = person.group;
+    }
+    else {
+        information = person.role;
+    }
+    console.log(`${person.name}, ${person.age}, ${information}`);
 };
 persons.forEach(logPerson);
